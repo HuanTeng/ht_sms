@@ -8,10 +8,10 @@ Gem::Specification.new do |spec|
   spec.version       = HtSms::VERSION
   spec.authors       = ["delong"]
   spec.email         = ["w.del@qq.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
-  spec.license       = "MIT"
+  spec.summary       = %q{TODO: send SMS.}
+  spec.description   = %q{TODO: use different SMS server send message to user.}
+  spec.homepage      = "https://github.com/HuanTeng/ht_sms"
+  spec.license       = "GPLv2"
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
