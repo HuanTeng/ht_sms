@@ -1,12 +1,12 @@
 require 'ht_sms/version'
 require 'ht_sms/duan_xin_bao'
 
-module HtSMS
+module HtSms
 
     Emitter = DuanXinBao
     Test = Rails.env.test?
 
-    def self.send_sms(phone, message, async=true, &block)
+    def send_sms(phone, message, async=true, &block)
         if Test
             fake_send_sms(phone, message, block)
         elsif defined?(HtSMS.method(:delay)) && async
