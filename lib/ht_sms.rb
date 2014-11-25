@@ -27,7 +27,7 @@ module HtSMS
 
         result.merge emit_sms(valid_phones, message)
 
-        result = errors[0] if single
+        result = result["#{phones[0]}"] if single
         yield(result) if block_given?
         nil
     end
@@ -49,7 +49,7 @@ module HtSMS
         result = { 'count' => phones.length}
         phones.each {|p| result["#{p}"] = nil}
 
-        result = errors[0] if single
+        result = result["#{phones[0]}"] if single
         yield(result) if block_given?
         nil
     end

@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = HtSms::VERSION
   spec.authors       = ["delong"]
   spec.email         = ["w.del@qq.com"]
-  spec.summary       = %q{TODO: send SMS.}
-  spec.description   = %q{TODO: use different SMS server send message to user.}
+  spec.summary       = %q{send SMS.}
+  spec.description   = %q{use different SMS server send message to user.}
   spec.homepage      = "https://github.com/HuanTeng/ht_sms"
   spec.license       = "GPLv2"
 
