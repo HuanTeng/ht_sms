@@ -38,13 +38,23 @@ class HtSmsTest < MiniTest::Test
         assert_equal [['13212345678', '???'], false], HtSms.plural_phone(['13212345678', '???'])
     end
 
-    def test_fake_send_sms
-        HtSms.send_sms(['13212345678', '13212345679'], 'some msg') do |result|
+    def test_emit_sms
+        result = HtSms.emit_sms(['13212345678', '13212345679'], 'some msg')
+        assert_equal nil, result['13212345678']
+        assert_equal nil, result['13212345679']
+    end
+
+    def test_send_sms_proxy
+        HtSms.send_sms_proxy(['13212345678', '13212345679'], 'some msg') do |result|
             assert_equal 2, result['count']
             assert_equal nil, result['13212345678']
             assert_equal nil, result['13212345679']
             assert_equal true, result.keys.include?('13212345678')
             assert_equal true, result.keys.include?('13212345679')
         end
+    end
+
+    def test_send_sms
+        # TODO: send real SMS
     end
 end

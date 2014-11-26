@@ -15,33 +15,19 @@ module DuanXinBao
         '51' => '手机号码不正确'
     }
 
-    if defined?(Setting)
-        Config = {
-            account: dxb.account,
-            password: dxb.password,
-            url: dxb.url
-        }
-    else
-        Config = {
-            account: nil,
-            password: nil,
-            url: nil
-        }
-    end
-
     class << self
 
         def send_single_sms(phone, message, fake_send)
             params = {
-                u: Config.account,
-                p: Config.password,
+                u: HtSms.config[:account],
+                p: HtSms.config[:password],
                 m: phone,
                 c: message
             }
             if fake_send
                 code = SuccessCode
             else
-                code = http_post(Config.url, params)
+                code = http_post(HtSms.config[:url], params)
             end
             code == SuccessCode ? nil : ErrorCode[code] || "unknow error: #{code}"
         end
