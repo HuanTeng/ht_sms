@@ -1,7 +1,5 @@
 module HtSms
 
-  Setting = defined?(Setting) ? Settings : {}
-
   class << self
 
     def test_env(test=nil)
@@ -13,6 +11,8 @@ module HtSms
     end
 
     def config
+      return nil unless defined?(Setting)
+
       if Emitter == DuanXinBao
         @dxb_config ||= defined?(Setting.duan_xin_bao) ? Setting.duan_xin_bao : nil
       end
