@@ -4,8 +4,8 @@ require 'net/http'
 # http://smsbao.com/
 module DuanXinBao
 
-    SuccessCode = '0'
-    ErrorCode = {
+    SUCCESS_CODE = '0'
+    ERROR_CODE = {
         '40' => '账号不存在',
         '30' => '密码错误',
         '41' => '余额不足',
@@ -25,11 +25,11 @@ module DuanXinBao
                 c: message
             }
             if fake_send
-                code = SuccessCode
+                code = SUCCESS_CODE
             else
                 code = http_post(HtSms.config[:url], params)
             end
-            code == SuccessCode ? nil : ErrorCode[code] || "unknow error: #{code}"
+            code == SUCCESS_CODE ? nil : ERROR_CODE[code] || "unknow error: #{code}"
         end
 
         def http_post(url, params)
