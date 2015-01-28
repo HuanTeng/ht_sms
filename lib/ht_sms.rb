@@ -13,7 +13,7 @@ module HtSms
 
     def self.send_sms(phone, message, async=true, &block)
         if defined?(HtSms.method(:delay)) && async
-            HtSms.delay.send_sms_proxy phone, message do |r|
+            HtSms.delay(queue: 'tracking', priority: 0).send_sms_proxy phone, message do |r|
                 block.call(r) if block_given?
             end
         else
